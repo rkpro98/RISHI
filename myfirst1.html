@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rishi Gaming Store — PUBG & Free Fire</title>
+  <style>
+    :root{--accent:#ff4757;--muted:#666}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Arial;margin:0;background:#f6f7fb;color:#111}
+    header{background:#0b1220;color:white;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand h1{font-size:18px;margin:0}
+    nav a{color:#dfe7ff;margin-left:12px;text-decoration:none}
+    .container{max-width:980px;margin:28px auto;padding:0 16px}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+    .card{background:white;border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+    h2{margin-top:0}
+    .game-list{display:flex;gap:12px;flex-wrap:wrap}
+    .game{border:1px solid #eee;border-radius:10px;padding:12px;width:calc(50% - 6px)}
+    label{display:block;margin:6px 0;font-size:13px}
+    input[type=text],select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ef}
+    button{background:var(--accent);color:white;padding:10px 14px;border:0;border-radius:8px;cursor:pointer}
+    .muted{color:var(--muted);font-size:13px}
+    .cart-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #eee}
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+    @media(max-width:880px){.grid{grid-template-columns:1fr}.game{width:100%}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect rx='10' width='40' height='40' fill='%23ff4757'/><text x='50%' y='55%' font-size='18' text-anchor='middle' fill='white' font-family='Arial'>R</text></svg>" alt="logo" style="border-radius:8px">
+      <h1>Rishi Gaming Store</h1>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#how">How it works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <section>
+        <div class="card">
+          <h2>Choose Game & Amount</h2>
+          <p class="muted">Select PUBG UC or Free Fire Diamonds, enter player ID and quantity.</p>
+
+          <div class="game-list" id="gameList">
+            <div class="game">
+              <strong>PUBG Mobile — UC</strong>
+              <p class="muted">Select UC package</p>
+              <label>Player ID (Steam/PPUID)</label>
+              <input type="text" id="pubgId" placeholder="Enter PUBG ID">
+              <label>Package</label>
+              <select id="pubgPackage">
+                <option value="60">60 UC — NPR 150</option>
+                <option value="120">120 UC — NPR 300</option>
+                <option value="180">180 UC — NPR 450</option>
+                <option value="325">325 UC — NPR 750</option>
+                <option value="385">385 UC — NPR 900</option>
+                <option value="660">660 UC — NPR 1475</option>
+                <option value="720">720 UC — NPR 1625</option>
+                <option value="985">985 UC — NPR 2230</option>
+                <option value="1320">1320 UC — NPR 2925</option>
+                <option value="1800">1800 UC — NPR 3675</option>
+                <option value="1920">1920 UC — NPR 3925</option>
+                <option value="2460">2460 UC — NPR 5125</option>
+                <option value="3850">3850 UC — NPR 7230</option>
+                <option value="5650">5650 UC — NPR 10899</option>
+                <option value="8100">8100 UC — NPR 14399</option>
+                <option value="16200">16200 UC — NPR 28700</option>
+              </select>
+              <div style="display:flex;gap:8px;margin-top:10px">
+                <button onclick="addToCart('pubg')">Add to cart</button>
+                <button onclick="buyNow('pubg')" style="background:#1e90ff">Buy now</button>
+              </div>
+            </div>
+
+            <div class="game">
+              <strong>Free Fire — Diamonds</strong>
+              <p class="muted">Select diamond package</p>
+              <label>Free Fire ID</label>
+              <input type="text" id="ffId" placeholder="Enter Free Fire ID">
+              <label>Package</label>
+              <select id="ffPackage">
+                <option value="115">115 Diamonds — NPR 105</option>
+                <option value="240">240 Diamonds — NPR 210</option>
+                <option value="355">355 Diamonds — NPR 315</option>
+                <option value="480">480 Diamonds — NPR 420</option>
+                <option value="610">610 Diamonds — NPR 525</option>
+                <option value="850">850 Diamonds — NPR 770</option>
+                <option value="1240">1240 Diamonds — NPR 1100</option>
+                <option value="1850">1850 Diamonds — NPR 1625</option>
+                <option value="2530">2530 Diamonds — NPR 2200</option>
+                <option value="5060">5060 Diamonds — NPR 4300</option>
+              </select>
+              <div style="display:flex;gap:8px;margin-top:10px">
+                <button onclick="addToCart('ff')">Add to cart</button>
+                <button onclick="buyNow('ff')" style="background:#1e90ff">Buy now</button>
+              </div>
+            </div>
+          </div>
+
+          <hr style="margin:18px 0">
+          <h3>Instructions</h3>
+          <ol>
+            <li>Enter the player's ID for the game you want to top-up.</li>
+            <li>Select a package and click <em>Add to cart</em> or <em>Buy now</em>.</li>
+            <li>Payment via eSewa/Khalti. Details below.</li>
+            <li>Orders are saved locally in this demo. For production, add server-side order storage.</li>
+          </ol>
+        </div>
+
+        <div class="card" id="how">
+          <h2>How it works</h2>
+          <p class="muted">User places order → Pays via chosen gateway → You fulfill top-up → Mark order complete.</p>
+        </div>
+
+      </section>
+
+      <aside>
+        <div class="card">
+          <h2>Your Cart</h2>
+          <div id="cartList">
+            <p class="muted">No items yet.</p>
+          </div>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button onclick="checkout()">Checkout</button>
+            <button onclick="clearCart()" style="background:#888">Clear</button>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3>Contact & Payment</h3>
+          <p class="muted">Email: rishiyt02122@gmail.com</p>
+          <p>Phone/WhatsApp: 9745858877</p>
+          <p>eSewa: 9814230858</p>
+          <p>Khalti: 9745858877</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h2 id="contact">Orders (Local Demo)</h2>
+      <p class="muted">Orders placed on this demo are saved in your browser's localStorage. In production, save orders in a database and verify payments server-side.</p>
+      <div id="orders"></div>
+    </div>
+
+    <footer>
+      &copy; <span id="year"></span> Rishi Gaming Store — Demo
+    </footer>
+  </main>
+
+  <script>
+    const priceMap = {
+      pubg: { '60':150,'120':300,'180':450,'325':750,'385':900,'660':1475,'720':1625,'985':2230,'1320':2925,'1800':3675,'1920':3925,'2460':5125,'3850':7230,'5650':10899,'8100':14399,'16200':28700 },
+      ff: { '115':105,'240':210,'355':315,'480':420,'610':525,'850':770,'1240':1100,'1850':1625,'2530':2200,'5060':4300 }
+    };
+
+    const cartKey = 'fasttopup_cart_v1';
+    const ordersKey = 'fasttopup_orders_v1';
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function getCart(){ return JSON.parse(localStorage.getItem(cartKey) || '[]'); }
+    function saveCart(c){ localStorage.setItem(cartKey, JSON.stringify(c)); renderCart(); }
+
+    function addToCart(type){
+      const id = type==='pubg'?document.getElementById('pubgId').value.trim():document.getElementById('ffId').value.trim();
+      const pkg = type==='pubg'?document.getElementById('pubgPackage').value:document.getElementById('ffPackage').value;
+      if(!id){ alert('Please enter player ID'); return; }
+      const item = { id: cryptoRandomId(), type, playerId: id, pkg: pkg, price: priceMap[type][pkg] };
+      const c = getCart(); c.push(item); saveCart(c); alert('Added to cart');
+    }
+
+    function buyNow(type){ const id = type==='pubg'?document.getElementById('pubgId').value.trim():document.getElementById('ffId').value.trim(); const pkg = type==='pubg'?document.getElementById('pubgPackage').value:document.getElementById('ffPackage').value; if(!id){ alert('Please enter player ID'); return; } const item = { id: cryptoRandomId(), type, playerId: id, pkg: pkg, price: priceMap[type][pkg] }; startPayment([item]); }
+
+    function renderCart(){ const list=document.getElementById('cartList'); const c=getCart(); if(c.length===0){ list.innerHTML='<p class="muted">No items yet.</p>'; return; } let html=''; let total=0; c.forEach(it=>{ html+=<div class="cart-item"><div><strong>${it.type==='pubg'?'PUBG UC':'Free Fire'}</strong><div class='muted'>ID: ${it.playerId} — ${it.pkg}</div></div><div><div>${it.price} NPR</div><button onclick="removeFromCart('${it.id}')" style="margin-top:6px;background:#eee;color:#333;padding:6px;border-radius:6px">Remove</button></div></div>; total+=it.price; }); html+=<div style='margin-top:12px'><strong>Total: ${total} NPR</strong></div>; list.innerHTML=html; }
+    function removeFromCart(id){ let c=getCart(); c=c.filter(x=>x.id!==id); saveCart(c); }
+    function clearCart(){ if(confirm('Clear cart?')) saveCart([]); }
+    function checkout(){ const c=getCart(); if(c.length===0){ alert('Cart empty'); return; } startPayment(c); }
+
+    function startPayment(items){ const total=items.reduce((s,i)=>s+i.price,0); const buyerName=prompt('Enter your name for the order:')||'Guest'; const buyerPhone=prompt('Enter phone/WhatsApp number:')||''; const order={ orderId:'ORD-'+Date.now(), items, total, buyerName, buyerPhone, status:'pending', createdAt:new Date().toISOString() }; saveOrder(order); if(confirm('Proceed to payment of '+total+' NPR? (Demo)')){ markOrderPaid(order.orderId,{ txId: 'DEMO-'+Math.floor(Math.random()*999999)}); alert('Payment (demo) successful. Order placed.'); saveCart([]); } else { alert('Payment canceled (demo).'); } }
+    function saveOrder(order){ const arr=JSON.parse(localStorage.getItem(ordersKey)||'[]'); arr.unshift(order); localStorage.setItem(ordersKey, JSON.stringify(arr)); renderOrders(); }
+    function markOrderPaid(orderId,paymentInfo){ const arr=JSON.parse(localStorage.getItem(ordersKey)||'[]'); const idx=arr.findIndex(o=>o.orderId===orderId); if(idx>=0){ arr[idx].status='paid'; arr[idx].paymentInfo=paymentInfo; localStorage.setItem(ordersKey, JSON.stringify(arr)); renderOrders(); } }
+    function renderOrders(){ const area=document.getElementById('orders'); const arr=JSON.parse(localStorage.getItem(ordersKey)||'[]'); if(arr.length===0){ area.innerHTML='<p class="muted">No orders yet.</p>'; return; } let html='<ul style="list-style:none;padding:0;margin:0">'; arr.forEach(o=>{ html+=<li style="padding:12px;border-bottom:1px solid #eee"><div style='display:flex;justify-content:space-between'><div><strong>${o.orderId}</strong> <div class='muted'>${new Date(o.createdAt).toLocaleString()}</div></div><div style='text-align:right'><div><strong>${o.total} NPR</strong></div><div class='muted'>${o.status.toUpperCase()}</div></div></div>; html+=<div style='margin-top:8px' class='muted'>Buyer: ${o.buyerName} ${o.buyerPhone?'- '+o.buyerPhone:''}</div>; html+=<div style='margin-top:8px'>Items:<ul>; o.items.forEach(it=>html+=<li class='muted'>${it.type==='pubg'?'PUBG UC':'Free Fire'} — ${it.pkg} — ID: ${it.playerId} — ${it.price} NPR</li>); html+='</ul></div>'; if(o.status!=='paid') html+=<div style='margin-top:8px'><button onclick="markOrderPaid('${o.orderId}', {txId:'MANUAL-'+Date.now()})">Mark Paid (manual)</button></div>; html+='</li>'; }); html+='</ul>'; area.innerHTML=html; }
+    function cryptoRandomId(){ return 'i_'+Math.random().toString(36).slice(2,9); }
+
+    renderCart(); renderOrders();
+  </script>
+</body>
+</html>
